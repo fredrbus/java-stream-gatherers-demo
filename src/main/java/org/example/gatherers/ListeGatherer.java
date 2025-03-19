@@ -46,7 +46,7 @@ public class ListeGatherer<T> implements Gatherer<T, List<T>, List<T>> {
         return Gatherer.super.andThen(that);
     }
 
-    static <T> ListeGatherer<T> tilListe() {
+    public static <T> ListeGatherer<T> tilListe() {
         return new ListeGatherer<T>();
     }
 

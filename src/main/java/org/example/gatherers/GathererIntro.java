@@ -1,5 +1,7 @@
 package org.example.gatherers;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.stream.Gatherer;
 import java.util.stream.Stream;
@@ -23,33 +25,14 @@ public class GathererIntro {
 
     public static void main(String[] args) {
 
-        Stream<Byte> rgbBytes = randomByteStream();
+         randomByteStream()
+                 .limit(7)
+                 .gather(rgbGatherer())
+                 .forEach(System.out::println);
         // Hvordan ville du gjort om denne strømmen av bytes, om til en strøm/liste/array av RGB'er?
         // { 128, 54, 23, 16, 234, 213, 134, 243, 43, 76, 34, 180 } -> RGB(128, 54, 23), RGB(16, 234, 213), RGB(134, 243, 43), RGB(76, 34, 180)
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public static Gatherer<Byte, ?, RGB> rgbGatherer() {
         class ColorWindow {
@@ -74,7 +57,8 @@ public class GathererIntro {
             }
 
             void finish(Gatherer.Downstream<? super RGB> downstream) {
-                if (at == 2 && !downstream.isRejecting()) {
+                // Fullfør og push siste RGB-objekt, men kun dersom vi har fått hentet alle 3 farge-bytes
+                if (window[2] != null && !downstream.isRejecting()) {
                     downstream.push(new RGB(window[0], window[1], window[2]));
                 }
             }

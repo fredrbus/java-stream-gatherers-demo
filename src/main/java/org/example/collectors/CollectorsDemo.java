@@ -2,6 +2,8 @@ package org.example.collectors;
 
 import java.util.stream.IntStream;
 
+import static org.example.collectors.ListeCollector.tilListe;
+
 public class CollectorsDemo {
 
     public static void main(String[] args) {
@@ -10,7 +12,7 @@ public class CollectorsDemo {
                     System.out.println("Dobler " + tall);
                     return tall * 2;
                 })
-                .findFirst();
+                .collect(tilListe());
     }
 
 }

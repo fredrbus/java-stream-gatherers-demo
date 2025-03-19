@@ -10,6 +10,8 @@ public class MapConcurrentDemo {
 
         long start = System.currentTimeMillis();
         IntStream.range(1, 500).boxed()
+//                .parallel()
+//                .map(tregDobling)
                 .gather(Gatherers.mapConcurrent(100, tregDobling))
                 .toList();
         ;

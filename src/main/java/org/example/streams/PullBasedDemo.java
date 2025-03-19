@@ -10,7 +10,7 @@ public class PullBasedDemo {
 
         var doblet = IntStream.range(1, 6).boxed()
                 .map(tregDobling)
-                .toList();
+                .findFirst();
         ;
         System.out.println(doblet);
     }

@@ -1,7 +1,6 @@
 package org.example.collectors;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.function.BiConsumer;
@@ -46,7 +45,7 @@ public class ListeCollector<T> implements Collector<T, List<T>, List<T>> {
         return Set.of(Characteristics.UNORDERED);
     }
 
-    public static <T> ListeCollector<T> tilListe() {
+    static <T> ListeCollector<T> tilListe() {
         return new ListeCollector<T>();
     }
 }

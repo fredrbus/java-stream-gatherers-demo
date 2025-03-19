@@ -10,9 +10,8 @@ public class InnebygdeGatherers {
     public static void main(String[] args) {
 
         var gathered = IntStream.range(0, 10).boxed()
-                .gather(tilListe())
-                .gather(Gatherers.windowFixed(10))
-                .findFirst();
+                .gather(Gatherers.windowSliding(3))
+                .toList();
 
         System.out.println(gathered);
     }

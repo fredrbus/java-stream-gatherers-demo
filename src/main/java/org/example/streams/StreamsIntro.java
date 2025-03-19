@@ -4,6 +4,8 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
+import static org.example.gatherers.ListeGatherer.tilListe;
+
 public class StreamsIntro {
     public static void main(String[] args) {
 
@@ -18,6 +20,7 @@ public class StreamsIntro {
                 //
                 .map(kvadrat)
                 .filter(erPartall)
+                .gather(tilListe())
 
                 // Avsluttes med en 'terminal function', f.eks.
                 //      - Aggregering (count, anyMatch, allMatch, reduce, etc.)
